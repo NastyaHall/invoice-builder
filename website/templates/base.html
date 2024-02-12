@@ -1,0 +1,414 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Homely</title>
+    <link rel="shortcut icon" type="x-icon" href="{{ url_for('static', filename='logo_icon.png') }}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <link href='https://fonts.googleapis.com/css?family=Outfit:bold,extrabold,extralight,light,medium,regular,semibold,thin' rel='stylesheet'>
+    <style>
+      *{
+        margin: 0;
+        padding: 0;
+        font-family: 'Outfit';
+    }
+    html, body {
+        height: 100%;
+    }
+    
+    .banner{
+        width: 100%;
+        height: 100vh;
+        background-image:  linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.75)), url(static/3.jpeg);
+        background-size: cover;
+        background-position: center;
+    }
+    .navbar{
+        width: 85%;
+        margin: auto;
+        padding: 35px 0;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    .logo{
+        width: 300px;
+        cursor: pointer;
+    }
+    
+    .navbar ul li {
+        list-style: none;
+        display: inline-block;
+        margin: 0 20px;
+        position: relative;
+    }
+    
+    .navbar ul li a{
+        text-decoration: none;
+        color: aliceblue;
+        text-transform: uppercase;
+    }
+    
+    .navbar ul li::after {
+        content: '';
+        height: 3px;
+        width: 0;
+        background: #73908d;
+        position: absolute;
+        left: 0;
+        bottom: -10px;
+        transition: 0.5s;
+    }
+    .navbar ul li:hover::after{
+        width: 100%;
+    }
+    
+    .content {
+        width: 100%;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        text-align: center;
+        color: aliceblue;
+    }
+    .content h1 {
+        font-weight: 600;
+        font-size: 70px;
+        margin-top: 80px;
+    }
+    
+    .content p {
+        margin: 20px auto;
+        line-height: 25px;
+        font-size: 25px;
+    }
+    
+    .custom-button{
+        width: 200px;
+        padding: 15px 0;
+        text-align: center;
+        margin: 20px 10px;
+        border-radius: 45px;
+        font-weight: bold;
+        border: 2px solid #73908d;
+        background: transparent;
+        color: aliceblue;
+        cursor: pointer;
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .custom-button::before {
+        content: ''; 
+        background: #73908d;
+        height: 100%;
+        width: 0;
+        border-radius: 25px;
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        z-index: -1;
+        transition: 0.5s;
+    }
+    
+    .custom-button:hover::before {
+        width: 100%;
+    }
+    .custom-button:hover {
+        border: none;
+    }
+    .modal-header,
+    .modal-footer {
+        border: none;
+    }
+    .modal-dialog{
+        max-width: 1000px;
+    }
+    .modal-content {
+        height:600px !important;
+    }
+    .modal-image-section {
+        text-align: center;
+        padding: 0;
+      }
+    .modal-image-section img{
+        width: 100%; 
+        border-radius: 10px 0 0 10px;
+    }
+    
+    .interior {
+        height: 100%; 
+    }
+    
+    .blueprint {
+        height: 100%; 
+    }
+    .modal-content-img{
+        width: 67%;
+    }
+    .intro {
+      margin-left: 15%;
+    }
+    
+    
+    .modal-content-img-border-radius{
+        border-radius: 10px 0 0 10px;
+    }
+    .modal-content-border-radius{
+        border-radius: 0 10px 10px 0;
+    }
+    
+      .logomodal {
+        width: 140px; /* Set the width of the image */
+        height: auto; /* Maintain aspect ratio */
+        position: absolute;
+        top: 10px; /* Adjust as needed for vertical positioning */
+        left: 10px; /* Adjust as needed for horizontal positioning */
+        margin: 30px 50px;
+      }
+    
+      .header-sign-in-label{
+        position: absolute;
+        top: 50px; 
+        left: 380px; 
+        font-size: 11px;
+        color: #656565;
+        font-weight: 300;
+        z-index: 1000;
+      }
+      .header-sign-up-label {
+        position: absolute;
+        top: 50px; 
+        left: 290px; 
+        font-size: 11px;
+        color: #656565;
+        font-weight: 300;
+        z-index: 1000;
+      }
+    
+    
+      .dim-text{
+        color: rgb(185, 179, 179);
+        font-size: 13px;
+        position: relative;
+      }
+    
+     .modal-body .form-group, .login-h3, button{
+        margin-left: 70px;
+        margin-bottom: 10px;
+     }
+     .login-input{
+        width: 80%;
+        margin: 5px 0;
+        color:#6d6f6e
+     }
+     .login-input::placeholder {
+        color: rgb(185, 179, 179);
+        font-size: small;
+        font-weight: 300;
+      }
+      .login-input:focus {
+        border: 1px solid rgb(55, 73, 175);
+      }
+      .login-label{
+        color:#656565
+      }
+      .btn-submit {
+        background-color:#6e9692;
+        width: 68%;
+        color: aliceblue;
+        margin-top: 14px;
+      }
+      .btn-submit:hover {
+        background-color:#507471;
+        color: aliceblue;
+      }
+    
+      .password-form-group{
+        width: 80%;
+        margin: 5px 0;
+        color:#6d6f6e;
+        position: relative;
+      }
+    
+      .password-form-group input {
+        color:#6d6f6e;
+        font-size: small;
+        font-weight: 400;
+        width: 100%;
+      }
+    
+      .password-form-group input::placeholder {
+        color: rgb(185, 179, 179);
+        font-size: small;
+        font-weight: 300;
+      }
+    
+      .password-form-group img {
+        position: absolute;
+        right: 15px; 
+        top: 50%;
+        transform: translateY(-50%);
+        cursor: pointer;
+    }
+    
+    .text-danger{
+        font-size: small;
+        font-weight: 400;
+        margin-right: 20%;
+        text-align: right;
+    }
+    
+    .login-form-group{
+        display: flex;
+        align-items: center;
+        justify-content: space-between; /* Distribute items evenly, pushing them to the sides */
+    }
+    
+    .error-border {
+        border: 1px solid #ab0606; /* Red border color */
+    }
+    
+    /* Remove the red border when the error is resolved */
+    .error-border.valid {
+        border: 1px solid #10913f; /* Default border color */
+    }
+    </style>
+  </head>
+  <body>
+    <div class="banner">
+      <div class="navbar">
+        <img src="{{ url_for('static', filename='logo4.png') }}" class="logo">
+        <ul>
+          {% if  user.is_authenticated%}
+            <li><a href="/about-us">About Us</a></li>
+            <li><a href="/contact" id="contact">Contact</a></li>
+            <li><a href="/logout">Log Out</a></li>
+          {% else %}
+            <li><a href="/login" data-bs-toggle="modal" data-bs-target="#modal" id="login-link">Login</a></li>
+            <li><a href="/sign-up" data-bs-toggle="modal" data-bs-target="#modal-sign-up" id="sign-up-link">Sign Up</a></li>
+            <li><a href="/about-us">About Us</a></li>
+            <li><a href="/contact">Contact</a></li>
+          {% endif %}
+        </ul>
+      </div>
+
+      <div class="content">
+        <h1>MAKE YOUR ACCOUNTING EASIER</h1>
+        <p id="token">Insert Data From Images and PDFs, Form Invoice, Send to Your Client</p>
+        <div>
+          <button type="button" class="custom-button">SEE TUTORIAL</button>
+          <button type="button" class="custom-button">JOIN US</button>
+        </div>
+      </div>
+
+      
+        <div class="modal fade" id="modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content modal-content-img-border-radius">
+              <div class="modal-image-section interior">
+                <img src="{{ url_for('static', filename='333.jpeg') }}" alt="Image">
+              </div>
+            </div>
+            <div class="modal-content modal-content-border-radius">
+              
+              <div class="modal-header d-flex justify-content-between">
+                  <img src="{{ url_for('static', filename='logomodal.png') }}" alt="Image" class="logomodal">
+                  <div class="header-sign-up-label">
+                    <p>Don't have an account? <a href="/sign-up">Sign Up</a></p>
+                  </div>
+              </div>
+              <div class="modal-body">
+                <br><br><br><br>
+                <div class="intro">
+                  <h1>Log In</h1>
+                  <p class="dim-text">Enter your email and password to login</p>
+                </div>
+                <form method="post" id="form-login">
+                  <div class="form-group">
+                      <br>
+                      <div class="login-form-group">
+                        <label for="email" class="login-label">Email</label>
+                        <div class="text-danger" id="loginEmailErrorMessage"></div>
+                      </div>
+                      <input type="email" placeholder="myemail@gmail.com" class="form-control login-input" id="email" name="email">
+                  </div>
+                  <div class="form-group">
+                    <div class="login-form-group">
+                      <label for="password" class="login-label">Password</label>
+                      <div class="text-danger" id="loginPasswordErrorMessage"></div>
+                    </div>
+                      
+                      <div class="password-form-group">
+                        <input type="password" placeholder="Enter your password" class="form-control login-input" id="password" name="password">
+                        <img src="{{ url_for('static', filename='eye-slash.svg') }}" id="eye-icon-login">
+                      </div>
+                  </div>
+                  <button type="submit" class="btn btn-submit">Login</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="modal fade" id="modal-sign-up" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content modal-content-img-border-radius modal-content-img">
+              <div class="modal-image-section blueprint">
+                <img src="{{ url_for('static', filename='Blog Illustration.jpeg') }}" alt="Image">
+              </div>
+            </div>
+            <div class="modal-content modal-content-border-radius">
+              <div class="modal-header d-flex justify-content-between">
+                  <img src="{{ url_for('static', filename='logomodal.png') }}" alt="Image" class="logomodal">
+                  <div class="header-sign-in-label">
+                    <p>Already a member? <a href="/login">Sign In</a></p>
+                  </div>
+              </div>
+              <div class="modal-body">
+                <br><br><br><br>
+                <div>
+                  <h3 class="login-h3">Sign Up to Homely</h3>
+                </div>
+                <br>
+        
+                <form method="post" id="sign-up-form">
+                  <div class="form-group">
+                    <label for="firstName" class="login-label">Name</label>
+                    <input type="text" placeholder="Enter your name" required class="form-control login-input" id="firstName" name="firstName">
+                  </div>
+                  <div class="form-group">
+                    <div class="login-form-group">
+                        <label for="email1" class="login-label">Email</label>
+                        <div class="text-danger" id="signUpEmailErrorMessage"></div>
+                    </div>
+                    <input type="email" placeholder="myemail@gmail.com" class="form-control login-input" id="email1" name="email">
+                  </div>
+                <div class="form-group">
+                    <div class="login-form-group">
+                      <label for="password1" class="login-label">Password</label>
+                      <div class="text-danger" id="signUpPasswordErrorMessage"></div>
+                    </div>
+                    
+                    <div class="password-form-group">
+                      <input type="password" placeholder="Enter your password" class="form-control" id="password1" name="password" required>
+                      <img src="{{ url_for('static', filename='eye-slash.svg') }}" id="eye-icon-sign-up">
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-submit">Create account</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      
+    </div>
+    
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+    <script src="{{ url_for('static', filename='index.js') }}"></script>
+  </body>
+</html>

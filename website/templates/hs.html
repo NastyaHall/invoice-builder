@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #confirmation-modal {
+            position: absolute;
+            background: white;
+            padding: 5px;
+            border-radius: 5px;
+            border: 0.5px solid #ccc;
+            min-width: 350px;
+            font-size: 14px;
+            justify-content: center;
+            text-align: center; 
+            vertical-align: middle;
+            min-height: 150px;
+            top: 50%;
+            left: 50%;
+            z-index: 1000;
+            transform: translate(-50%, -50%);
+        }
+        #confirmation-modal .header-question{
+            color: #6c6c6c;
+            font-weight: 400;
+            border-radius: 4px;
+            font-size: 20px;
+            margin-top: 10%;
+            margin-bottom: 5%;
+        }
+        #confirmation-modal .buttons-row .cancel-btn{
+            cursor: pointer;
+            color: #6c6c6c;
+            border-radius: 5px;
+            border: 0.5px solid #ccc;
+            background-color:#ccc;
+            max-width: 90px;
+            padding: 2%;
+        }
+        #confirmation-modal .buttons-row .confirm-btn{
+            cursor: pointer;
+            color: #ffffff;
+            border-radius: 5px;
+            border: 0.5px solid #ccc;
+            background-color: rgb(74, 40, 210);
+            max-width: 90px;
+            padding: 2%;
+            vertical-align: middle;
+            display: flex; /* Add this */
+            align-items: center; /* Add this */
+            justify-content: center; 
+        }
+        #confirmation-modal .buttons-row{
+            display: flex;
+            justify-content: center;
+            text-align: center; 
+            vertical-align: middle;
+            gap: 10px;
+        }
+        .hidden{
+            display: none;
+        }
+        #overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5); /* Adjust the opacity here */
+            z-index: 999; /* Higher than confirmation-modal */
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="overlay"></div>
+    <button onclick="showModal()">Click</button>
+    
+    <div id="confirmation-modal" class="hidden">
+        <div class="header-question">Add it to 'January' section?</div>
+        <div class="buttons-row">
+            <div class="cancel-btn">No, add to current month</div>
+            <div class="confirm-btn">Yes, add to 'January'</div>
+        </div>
+        
+    </div>
+    <script>
+        function showModal(){
+            document.getElementById("overlay").style.display = "block";
+            document.getElementById("confirmation-modal").classList.remove("hidden");
+            
+        }
+    </script>
+</body>
+</html>

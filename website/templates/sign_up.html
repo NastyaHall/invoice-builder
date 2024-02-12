@@ -1,0 +1,61 @@
+
+
+{% extends "base.html" %}
+
+{% block modal_sign_up %}
+<div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content modal-content-img-border-radius modal-content-img">
+      <div class="modal-image-section blueprint">
+        <img src="{{ url_for('static', filename='Blog Illustration.jpeg') }}" alt="Image">
+      </div>
+    </div>
+    <div class="modal-content modal-content-border-radius">
+      <div class="modal-header d-flex justify-content-between">
+          <img src="{{ url_for('static', filename='logomodal.png') }}" alt="Image" class="logomodal">
+          <div class="header-sign-in-label">
+          <p>Already a member? <a href="/login">Sign In</a> </p>
+      </div>
+      </div>
+      <div class="modal-body">
+        <br><br><br><br>
+        <div>
+          <h3 class="login-h3">Sign Up to Homely</h3>
+        </div>
+        <br>
+
+        <form method="post" id="sign-up-form">
+          <div class="form-group">
+            <label for="firstName" class="login-label">Name</label>
+            <input type="text" placeholder="Enter your name" required class="form-control login-input" id="firstName" name="firstName">
+          </div>
+        <div class="form-group">
+            <div class="login-form-group">
+                <label for="email" class="login-label">Email</label>
+                {% if email_error %}
+                    <div class="text-danger" id="email-error">{{email_error}}</div>
+                {% endif %}
+            </div>
+            {% if email_error %}
+                <input type="email" placeholder="myemail@gmail.com" class="form-control login-input  error-border" id="email" name="email">
+            {% else %}
+                <input type="email" placeholder="myemail@gmail.com" class="form-control login-input" id="email" name="email">
+            {% endif %}
+            </div>
+        <div class="form-group">
+            <div class="login-form-group">
+              <label for="password" class="login-label">Password</label>
+              <div class="text-danger" id="password-error">
+              </div>
+            </div>
+            
+            <div class="password-form-group">
+              <input type="password" placeholder="Enter your password" class="form-control" id="password" name="password" required>
+              <img src="{{ url_for('static', filename='eye-slash.svg') }}" id="eye-icon">
+            </div>
+        </div>
+        <button type="submit" class="btn btn-submit">Create account</button>
+        </form>
+      </div>
+    </div>
+  </div>
+{% endblock %}

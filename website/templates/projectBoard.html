@@ -1,0 +1,26 @@
+{% extends "home.html" %}
+
+{% block project_board %}
+<section class="home">
+    <div class="text" id="main-page-project-name" contenteditable="true">{{invoice.title}}</div>
+    <div class="anything address" contenteditable="true">Address of the house</div>
+    <div class="customer-info-box">
+        <div class="header">
+            <div class="customer-name-box" id="customer-name-box">
+                <div class="customer-name" contenteditable="true">Customer Name</div>
+                <div class="customers-contacts">Customer's contacts</div>
+            </div>
+            <i class='bx bxs-contact contact-icon'></i>
+        </div><br>
+        <div class="contacts-data-box">
+            <div class="contacts-data-label">Phone number:</div>
+            <div class="contacts-data-input" contenteditable="true">+1 (203) 2873 23</div>
+        </div>
+        <div class="contacts-data-box">
+            <div class="contacts-data-label">email:</div>
+            <div class="contacts-data-input" contenteditable="true">myemail@gmail.com</div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+<script src="{{ url_for('static', filename='projectBoard.js') }}"></script>

@@ -1,0 +1,47 @@
+
+
+{% extends "base.html" %}
+
+{% block modal %}
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content modal-content-img-border-radius">
+        <div class="modal-image-section interior">
+          <img src="{{ url_for('static', filename='33.jpeg') }}" alt="Image">
+        </div>
+      </div>
+      <div class="modal-content modal-content-border-radius">
+        <div class="modal-header">
+          <img src="{{ url_for('static', filename='logomodal.png') }}" alt="Image" class="logomodal">
+        </div>
+        <div class="modal-body">
+          <br><br><br><br>
+          <div class="intro">
+            <h1>Log In</h1>
+            <p class="dim-text">Enter your email and password to login</p>
+          </div>
+          <form method="post">
+            <div class="form-group">
+                <br>
+                <label for="email" class="login-label">Email</label>
+                <input type="email" placeholder="myemail@gmail.com" class="form-control login-input" id="email" name="email">
+                {% if email_error %}
+                    <div class="text-danger">
+                        {{ email_error }}
+                    </div>
+                {% endif %}
+            </div>
+            <div class="form-group">
+                <label for="password" class="login-label">Password</label>
+                <input type="password" placeholder="Enter your password" class="form-control login-input" id="password" name="password">
+                {% if password_error %}
+                    <div class="text-danger">
+                        {{ password_error }}
+                    </div>
+                {% endif %}
+            </div>
+            <button type="submit" class="btn btn-submit">Login</button>
+          </form>
+        </div>
+      </div>
+    </div>
+{% endblock %}
