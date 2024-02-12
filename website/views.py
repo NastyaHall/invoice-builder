@@ -8,7 +8,7 @@ import json
 
 
 views = Blueprint('views', __name__)
-mindee_client = Client(api_key="e5a9d9eb0e24d05ad05e12cd4bacf2d6")
+mindee_client = Client(api_key="")
 
 @views.route('/')
 @login_required
